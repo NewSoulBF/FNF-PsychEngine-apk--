@@ -660,7 +660,7 @@ class Controls extends FlxActionSet
 				func(_pause, JUST_PRESSED);
 			case RESET:
 				func(_reset, JUST_PRESSED);
-			case RESET:
+			case SPACE:
 				func(_space, PRESSED);	
 				func(_spaceP, JUST_PRESSED);
 				func(_spaceR, JUST_RELEASED);
