@@ -11,13 +11,15 @@ import flixel.input.gamepad.FlxGamepadButton;
 import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
 
-#if android
+#if mobile
 import flixel.group.FlxGroup;
-import android.FlxHitbox;
-import android.FlxNewHitbox;
-import android.FlxVirtualPad;
+
+import mobile.flixel.FlxButton;
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxNewHitbox;
+import mobile.flixel.FlxVirtualPad;
 import flixel.ui.FlxButton;
-import android.flixel.FlxButton as FlxNewButton;
+import mobile.flixel.FlxButton as FlxNewButton;
 #end
 
 #if (haxe >= "4.0.0")
@@ -415,7 +417,7 @@ class Controls extends FlxActionSet
 	}
 	#end
 
-	#if android
+	#if mobile
 	public var trackedinputsUI:Array<FlxActionInput> = [];
 	public var trackedinputsNOTES:Array<FlxActionInput> = [];	
 
@@ -825,7 +827,7 @@ class Controls extends FlxActionSet
 	 * Sets all actions that pertain to the binder to trigger when the supplied keys are used.
 	 * If binder is a literal you can inline this
 	 */
-        #if !android
+        #if !mobile
 	public function bindKeys(control:Control, keys:Array<FlxKey>)
 	{
 		var copyKeys:Array<FlxKey> = keys.copy();
