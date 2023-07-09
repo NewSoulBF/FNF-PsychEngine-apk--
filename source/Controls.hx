@@ -12,6 +12,13 @@ import flixel.input.gamepad.FlxGamepadInputID;
 import flixel.input.keyboard.FlxKey;
 
 #if mobile
+import mobile.flixel.FlxButton;
+import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxNewHitbox;
+import mobile.flixel.FlxVirtualPad;
+#end
+/*
+#if mobile
 import flixel.group.FlxGroup;
 
 import mobile.flixel.FlxButton;
@@ -19,9 +26,9 @@ import mobile.flixel.FlxHitbox;
 import mobile.flixel.FlxNewHitbox;
 import mobile.flixel.FlxVirtualPad;
 import flixel.ui.FlxButton;
-import mobile.flixel.FlxButton as FlxNewButton;
+import mobile.flixel.FlxButton as FlxButton;
 #end
-
+*/
 #if (haxe >= "4.0.0")
 enum abstract Action(String) to String from String
 {
@@ -429,14 +436,14 @@ class Controls extends FlxActionSet
 	}
 	
 	//rework later
-	public function addButtonNOTES(action:FlxActionDigital, button:FlxNewButton, state:FlxInputState)
+	public function addButtonNOTES(action:FlxActionDigital, button:FlxButton, state:FlxInputState)
 	{
 		var input = new FlxActionInputDigitalIFlxInput(button, state);
 		trackedinputsNOTES.push(input);
 		action.add(input);
 	}
 	
-	public function addbuttonUI(action:FlxActionDigital, button:FlxNewButton, state:FlxInputState) {
+	public function addbuttonUI(action:FlxActionDigital, button:FlxButton, state:FlxInputState) {
 		var input = new FlxActionInputDigitalIFlxInput(button, state);
 		trackedinputsUI.push(input);
 		action.add(input);
