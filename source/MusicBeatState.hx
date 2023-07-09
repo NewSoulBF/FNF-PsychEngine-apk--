@@ -14,11 +14,12 @@ import flixel.util.FlxGradient;
 import flixel.FlxState;
 import flixel.FlxCamera;
 import flixel.FlxBasic;
-
-#if android
+#if mobile
+import mobile.MobileControls;
+import mobile.flixel.FlxVirtualPad;
+import flixel.FlxCamera;
 import flixel.input.actions.FlxActionInput;
-import android.AndroidControls.AndroidControls;
-import android.FlxVirtualPad;
+import flixel.util.FlxDestroyUtil;
 #end
 
 class MusicBeatState extends FlxUIState
@@ -38,14 +39,14 @@ class MusicBeatState extends FlxUIState
 	inline function get_controls():Controls
 		return PlayerSettings.player1.controls;
 
-	#if android
+	#if mobile
 	var _virtualpad:FlxVirtualPad;
-	var androidc:AndroidControls;
+	var mobilec:mobileControls;
 	var trackedinputsUI:Array<FlxActionInput> = [];
 	var trackedinputsNOTES:Array<FlxActionInput> = [];
 	#end
 	
-	#if android
+	#if mobile
 	public function addVirtualPad(?DPad:FlxDPadMode, ?Action:FlxActionMode) {
 		_virtualpad = new FlxVirtualPad(DPad, Action, 0.75, ClientPrefs.globalAntialiasing);
 		add(_virtualpad);
@@ -55,25 +56,25 @@ class MusicBeatState extends FlxUIState
 	}
 	#end
 
-	#if android
+	#if mobile
 	public function removeVirtualPad() {
 		controls.removeFlxInput(trackedinputsUI);
 		remove(_virtualpad);
 	}
 	#end
 
-	#if android
-	public function addAndroidControls() {
-		androidc = new AndroidControls();
+	#if mobile
+	public function addmobileControls() {
+		mobilec = new mobileControls();
 
-		switch (androidc.mode)
+		switch (mobilec.mode)
 		{
 			case VIRTUALPAD_RIGHT | VIRTUALPAD_LEFT | VIRTUALPAD_CUSTOM:
-				controls.setVirtualPadNOTES(androidc.vpad, FULL, NONE);
+				controls.setVirtualPadNOTES(mobilec.vpad, FULL, NONE);
 			case DUO:
-				controls.setVirtualPadNOTES(androidc.vpad, DUO, NONE);
+				controls.setVirtualPadNOTES(mobilec.vpad, DUO, NONE);
 			case HITBOX:
-				controls.setNewHitBox(androidc.newhbox);
+				controls.setNewHitBox(mobilec.newhbox);
 				
 			default:
 		}
@@ -86,15 +87,15 @@ class MusicBeatState extends FlxUIState
 		var camcontrol = new flixel.FlxCamera();
 		FlxG.cameras.add(camcontrol, false);
 		camcontrol.bgColor.alpha = 0;
-		androidc.cameras = [camcontrol];
+		mobilec.cameras = [camcontrol];
 
-		androidc.visible = false;
+		mobilec.visible = false;
 
-		add(androidc);
+		add(mobilec);
 	}
 	#end
 
-	#if android
+	#if mobile
         public function addPadCamera() {
 		var camcontrol = new flixel.FlxCamera();
 		camcontrol.bgColor.alpha = 0;
@@ -104,7 +105,7 @@ class MusicBeatState extends FlxUIState
 	#end
 	
 	override function destroy() {
-		#if android
+		#if mobile
 		controls.removeFlxInput(trackedinputsNOTES);
 		controls.removeFlxInput(trackedinputsUI);
 		#end
