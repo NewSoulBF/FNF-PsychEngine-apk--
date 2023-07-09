@@ -4,7 +4,7 @@ import flixel.FlxG;
 import flixel.group.FlxSpriteGroup;
 import flixel.math.FlxPoint;
 import flixel.util.FlxDestroyUtil;
-import mobile.flixel.FlxNewHitbox;
+import mobile.flixel.FlxHitbox;
 import mobile.flixel.FlxVirtualPad;
 
 /**
@@ -16,7 +16,7 @@ class MobileControls extends FlxSpriteGroup
 	public static var mode(get, set):String;
 
 	public var virtualPad:FlxVirtualPad;
-	public var hitbox:FlxNewHitbox;
+	public var hitbox:FlxHitbox;
 
 	public function new()
 	{
@@ -37,7 +37,7 @@ class MobileControls extends FlxSpriteGroup
 				virtualPad = new FlxVirtualPad(BOTH_FULL, NONE);
 				add(virtualPad);
 			case 'Hitbox':
-				hitbox = new FlxNewHitbox();
+				hitbox = new FlxHitbox();
 				add(hitbox);
 			case 'Keyboard': // do nothing
 		}
