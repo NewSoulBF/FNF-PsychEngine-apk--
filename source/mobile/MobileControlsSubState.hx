@@ -11,7 +11,7 @@ import flixel.text.FlxText;
 import flixel.util.FlxColor;
 import flixel.util.FlxSave;
 import mobile.flixel.FlxButton;
-import mobile.flixel.FlxHitbox;
+import mobile.flixel.FlxNewHitbox;
 import mobile.flixel.FlxVirtualPad;
 import openfl.utils.Assets;
 
@@ -20,7 +20,7 @@ class MobileControlsSubState extends FlxSubState
 	private final controlsItems:Array<String> = ['Pad-Right', 'Pad-Left', 'Pad-Custom', 'Pad-Duo', 'Hitbox', 'Keyboard'];
 
 	private var virtualPad:FlxVirtualPad;
-	private var hitbox:FlxHitbox;
+	private var hitbox:FlxNewHitbox;
 	private var upPosition:FlxText;
 	private var downPosition:FlxText;
 	private var leftPosition:FlxText;
@@ -250,7 +250,7 @@ class MobileControlsSubState extends FlxSubState
 				add(virtualPad);
 			case 'Hitbox':
 				removeControls();
-				hitbox = new FlxHitbox();
+				hitbox = new FlxNewHitbox();
 				add(hitbox);
 			default:
 				removeControls();
