@@ -39,7 +39,7 @@ class ClientPrefs {
     
 	public static var hitboxExtend = true;
 	public static var hitboxLocation:String = 'Bottom';
-	public static var hitboxalpha:Float = 0; //someone request this lol
+	public static var hitboxalpha:Float = 0.3; //someone request this lol
 	public static var gameplaySettings:Map<String, Dynamic> = [
 		'scrollspeed' => 1.0,
 		'scrolltype' => 'multiplicative', 
